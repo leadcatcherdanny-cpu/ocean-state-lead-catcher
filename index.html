@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Ocean State Lead Catcher: Rhode Island house deals, scored every morning</title>
+<meta name="description" content="Every new Rhode Island listing, checked against sold prices. Get the 3 best flip and rental deals each week, free.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#edf1f4; --surface:#ffffff; --ink:#10202e; --muted:#51616f; --line:#d2dae1;
+  --accent:#5a3d8a; --accent-ink:#ffffff; --accent-soft:#ece6f6;
+  --good:#1c6e47; --good-bg:#dff2e7; --warn:#8a5a00; --warn-bg:#fbefcf; --bar:#c9d3db;
+  --f-display:"Bricolage Grotesque","Arial Narrow",Arial,sans-serif;
+  --f-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){ :root{
+  --bg:#0c141b; --surface:#131d26; --ink:#e5ebf0; --muted:#94a3b0; --line:#26333e;
+  --accent:#b9a0f2; --accent-ink:#170d2c; --accent-soft:#221a36;
+  --good:#7fd6a6; --good-bg:#14301f; --warn:#f0c35a; --warn-bg:#33290f; --bar:#32414e; color-scheme:dark } }
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+img{max-width:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+.wrap{max-width:1120px;margin:0 auto;padding-block:20px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:56px}
+a{color:var(--accent)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0}
+
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.brand{font-family:var(--f-display);font-weight:800;font-size:19px;letter-spacing:-.01em;display:flex;align-items:center;gap:10px}
+.brand svg{flex:none}
+.top span{font-size:13.5px;color:var(--muted)}
+
+.hero{display:grid;grid-template-columns:minmax(0,1fr);max-width:820px}
+.hero > div{min-width:0;display:grid;gap:18px}
+h1{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,5.4vw,58px);line-height:1.02;letter-spacing:-.02em;margin:0;text-wrap:balance}
+h1 em{font-style:normal;color:var(--accent)}
+.lede{margin:0;font-size:18px;color:var(--muted);max-width:56ch}
+form{display:grid;gap:10px;max-width:520px}
+.fields{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
+label{font-size:13.5px;font-weight:600}
+input,select,button{font:inherit}
+label.soft{font-weight:400;font-size:13.5px;color:var(--muted);display:block;margin-bottom:4px}
+.fields.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+input[type=email],input[type=text],select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);min-width:0}
+button.go{padding:12px 20px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:var(--accent-ink);font-weight:600;cursor:pointer;white-space:nowrap}
+button.go:disabled{opacity:.6;cursor:default}
+input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.msg{margin:0;font-size:14.5px;padding:10px 12px;border-radius:8px;background:var(--accent-soft)}
+.fine{margin:0;font-size:13.5px;color:var(--muted)}
+.counts{display:flex;flex-wrap:wrap;gap:6px 20px;font-family:var(--f-mono);font-size:13px;color:var(--muted);margin:0;padding:0;list-style:none}
+.counts b{color:var(--ink);font-weight:500}
+
+h2{font-family:var(--f-display);font-weight:800;font-size:clamp(24px,3.2vw,32px);line-height:1.1;letter-spacing:-.01em;margin:0;text-wrap:balance}
+.sec{display:grid;gap:20px}
+.sec-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 20px}
+.tag{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;border-radius:999px;background:var(--warn-bg);color:var(--warn)}
+.tag.live{background:var(--good-bg);color:var(--good)}
+
+.tickets{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.ticket{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px;display:grid;gap:14px;min-width:0;align-content:start}
+.t-head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center}
+.score{font-family:var(--f-display);font-weight:800;font-size:30px;line-height:1;width:58px;height:58px;display:grid;place-items:center;border-radius:8px;background:var(--accent);color:var(--accent-ink)}
+.t-head h3{margin:0;font-family:var(--f-display);font-weight:600;font-size:17px;line-height:1.2}
+.t-head p{margin:2px 0 0;font-size:13.5px;color:var(--muted)}
+.verdict{margin:0;font-weight:600;font-size:15px}
+.why{margin:-8px 0 0;font-size:13.5px;color:var(--muted)}
+a.go{display:inline-block;padding:10px 18px;border-radius:8px;background:var(--accent);color:var(--accent-ink);font-weight:600;text-decoration:none;justify-self:start}
+.ledger{margin:0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 12px;font-size:14px}
+.ledger dt{color:var(--muted)}
+.ledger dd{margin:0;text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.ledger .rule{grid-column:1/-1;border-top:1px dashed var(--line);margin:3px 0}
+.pos{color:var(--good)} .neg{color:var(--warn)}
+.scale{display:grid;gap:4px}
+.scale-track{position:relative;height:26px}
+.scale-track::before{content:"";position:absolute;left:0;right:0;top:11px;height:4px;border-radius:2px;background:var(--bar)}
+.pin{position:absolute;top:4px;width:2px;height:18px;background:var(--ink)}
+.pin.ask{background:var(--accent);width:4px;margin-left:-2px;border-radius:2px}
+.scale-key{display:flex;flex-wrap:wrap;gap:2px 14px;font-family:var(--f-mono);font-size:11.5px;color:var(--muted)}
+.scale-key i{display:inline-block;width:8px;height:8px;border-radius:2px;margin-right:5px;background:var(--ink)}
+.scale-key i.a{background:var(--accent)}
+.locked{font-size:13px;color:var(--muted);margin:0}
+
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin:0;padding:0;list-style:none;counter-reset:s}
+.steps li{counter-increment:s;border-top:2px solid var(--ink);padding-top:12px;display:grid;gap:6px;align-content:start}
+.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.steps h3{margin:0;font-family:var(--f-display);font-weight:600;font-size:17px}
+.steps p{margin:0;font-size:14.5px;color:var(--muted)}
+
+.plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.plan{border:1px solid var(--line);border-radius:10px;padding:20px;display:grid;gap:10px;align-content:start;background:var(--surface)}
+.plan.alt{background:transparent;border-style:dashed}
+.plan h3{margin:0;font-family:var(--f-display);font-weight:800;font-size:22px}
+.plan .price{font-family:var(--f-mono);font-size:14px;color:var(--muted);margin:0}
+.plan ul{margin:0;padding-left:18px;display:grid;gap:5px;font-size:15px}
+
+.notes{display:grid;gap:8px;font-size:14px;color:var(--muted);max-width:75ch}
+.notes p{margin:0}
+footer{border-top:1px solid var(--line);padding-top:16px;font-size:13.5px;color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-between}
+footer .sel{user-select:all;color:var(--ink)}
+
+@media (max-width:900px){ .tickets{grid-template-columns:minmax(0,1fr)} .steps{grid-template-columns:repeat(2,minmax(0,1fr))} .plans{grid-template-columns:minmax(0,1fr)} }
+@media (max-width:480px){ .fields,.fields.two{grid-template-columns:minmax(0,1fr)} .steps{grid-template-columns:minmax(0,1fr)} .wrap{gap:44px} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <div class="brand">
+      <svg width="26" height="26" viewBox="0 0 26 26" role="img" aria-label="Ocean State Lead Catcher mark"><rect x="1" y="1" width="24" height="24" rx="6" fill="var(--accent)"/><path d="M6 15.5c2.2 0 2.2-2 4.4-2s2.2 2 4.4 2 2.2-2 4.4-2" fill="none" stroke="var(--accent-ink)" stroke-width="2" stroke-linecap="round"/><path d="M8 10.5 13 6.5l5 4" fill="none" stroke="var(--accent-ink)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 19.5h14" stroke="var(--accent-ink)" stroke-width="2" stroke-linecap="round"/></svg>
+      Ocean State Lead Catcher
+    </div>
+    <span>Rhode Island house deals, scored every morning</span>
+  </div>
+
+  <section class="hero">
+    <div>
+      <p class="eyebrow">For Rhode Island flippers and landlords</p>
+      <h1>Every new Rhode Island listing, checked against <em>sold prices</em> before breakfast.</h1>
+      <p class="lede">Each morning we score the newest listings in all 39 cities and towns: price per square foot against what homes in that town actually sold for, an after-repair value, a 70%-rule max offer, and what it would rent for. You get the short list.</p>
+      <form id="signup" novalidate>
+        <label for="email">Get the 3 best deals each week, free</label>
+        <div class="fields">
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          <button class="go" id="send" type="submit">Send me deals</button>
+        </div>
+        <label for="interest" class="soft">What are you looking for?</label>
+        <select id="interest" name="interest">
+          <option>Flips</option><option>Rentals</option><option selected>Both</option>
+        </select>
+        <div class="fields two">
+          <div><label for="towns" class="soft">Towns (optional)</label><input id="towns" name="towns" type="text" maxlength="120" placeholder="Providence, Cranston" autocomplete="off"></div>
+          <div><label for="maxPrice" class="soft">Top price (optional)</label>
+            <select id="maxPrice" name="maxPrice"><option value="">Any price</option><option value="250000">$250,000</option><option value="350000">$350,000</option><option value="500000">$500,000</option><option value="750000">$750,000</option></select></div>
+        </div>
+        <div class="hp" aria-hidden="true"><label for="company">Company</label><input id="company" name="company" tabindex="-1" autocomplete="off"></div>
+        <p class="msg" id="msg" role="status" hidden></p>
+        <p class="fine">One email a week. No spam, and we never share your address. Unsubscribe by replying "stop".</p>
+      </form>
+      <ul class="counts" id="counts" hidden></ul>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="dealsH">
+    <div class="sec-head">
+      <h2 id="dealsH">What a deal looks like</h2>
+      <span class="tag" id="dealsTag">Example deals, not real listings</span>
+    </div>
+    <div class="tickets" id="tickets"></div>
+    <p class="locked">Street numbers and listing-agent phone numbers are on the subscriber list, not this page.</p>
+  </section>
+
+  <section class="sec" aria-labelledby="howH">
+    <h2 id="howH">How a house gets on the list</h2>
+    <ol class="steps">
+      <li><h3>New listings, daily</h3><p>Single-family, multi-family, condos and townhouses across Rhode Island, pulled each morning.</p></li>
+      <li><h3>Compared to sold prices</h3><p>Price per square foot against recent sales in the same town and property type, not against other asking prices.</p></li>
+      <li><h3>Run as a flip and a rental</h3><p>After-repair value, repairs by age of the house, a 70%-rule max offer, then rent, cap rate and monthly cash flow.</p></li>
+      <li><h3>Scored and tracked</h3><p>Foreclosures, price cuts and stale listings score higher. When a flagged house sells, we log what it sold for.</p></li>
+    </ol>
+  </section>
+
+  <section class="sec" aria-labelledby="planH">
+    <h2 id="planH">What you get</h2>
+    <div class="plans">
+      <div class="plan">
+        <h3>Weekly top 3</h3>
+        <p class="price">Free</p>
+        <ul><li>The three best deals of the week for your towns and price range</li><li>Asking price, sold-price comparison, max offer and rent estimate</li><li>Town and street, so you can drive by</li></ul>
+      </div>
+      <div class="plan alt">
+        <h3>The full list</h3>
+        <p class="price" id="planPrice">Opening soon · subscribers hear first</p>
+        <ul><li>Up to 10 deals a week matched to your towns and budget</li><li>House numbers and a plain reason for every score</li><li>Listing agent's name and phone, links to the listing and map</li><li>Off-market notices: foreclosure auctions, tax sales, probate</li><li>The Google Sheet with a town heat map and deal calculator</li></ul>
+        <a class="go" id="planLink" href="#" target="_blank" rel="noopener" hidden>Get the full list</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="notes" aria-label="Plain facts">
+    <p><strong style="color:var(--ink)">Plain facts.</strong> Numbers on this list are estimates from listing and public sale data. Repair costs are guessed from the age of the house; nobody has walked it. Treat the list as a short list, then see the house and pull your own comps before any offer.</p>
+    <p>Ocean State Lead Catcher is not a real estate broker and does not represent buyers or sellers. Nothing here is investment, legal or tax advice. Rhode Island's wholesaling law takes effect January 1, 2027: assigning purchase contracts more than once in 12 months will need a real estate license.</p>
+    <p>Built by Danny O'Hare, a Rhode Island native and college student who builds AI tools and Google Sheets automations.</p>
+  </section>
+
+  <footer>
+    <span>Ocean State Lead Catcher · Rhode Island</span>
+    <span>Questions: <span class="sel">danny123ohare@icloud.com</span></span>
+  </footer>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  // Apps Script web app URL (ends in /exec): shows live deals and saves signups to the sheet.
+  const ENDPOINT = 'https://script.google.com/macros/s/AKfycbygMbEOJ5SyGwSoVCERcyjNM77FZjHUYaoqBELcyY60gcssV3WCiql24_vOFVtIVoQ73Q/exec';
+
+  const EXAMPLES = [
+    { score: 57, verdict: 'Under market, check condition', street: 'Cottage St', town: 'Pawtucket', type: 'Multi-Family', price: 319000, beds: 6, sqft: 2700, vsMarket: -0.44, arv: 648000, repairs: 189000, maxOffer: 264600, profit: 62240, rent: 4700, cashFlow: 993, why: '44% under sold prices per sq ft nearby; foreclosure; asking is $54k over the 70% max offer; cash flows about $993/mo as a rental.' },
+    { score: 56, verdict: 'Under market, check condition', street: 'Sandy Ln', town: 'Warwick', type: 'Single Family', price: 239000, beds: 3, sqft: 1050, vsMarket: -0.28, arv: 362250, repairs: 42000, maxOffer: 211575, profit: 37780, rent: 2500, cashFlow: 182, why: '28% under sold prices per sq ft nearby; 2 price cuts; 64 days on market vs 26 typical; asking is $27k over the 70% max offer.' },
+    { score: 55, verdict: 'Flip if they take ~$263k', street: 'Hope St', town: 'Providence', type: 'Single Family', price: 289000, beds: 3, sqft: 1450, vsMarket: -0.35, arv: 490100, repairs: 79750, maxOffer: 263320, profit: 62538, rent: 2450, cashFlow: -95, why: '35% under sold prices per sq ft nearby; 1 price cut; asking is $26k over the 70% max offer.' }
+  ];
+
+  const $ = id => document.getElementById(id);
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const num = v => (typeof v === 'number' && isFinite(v)) ? v : null;
+  const money = v => num(v) === null ? '—' : (v < 0 ? '−$' : '$') + Math.abs(Math.round(v)).toLocaleString('en-US');
+  const pct = v => num(v) === null ? '—' : (v > 0 ? '+' : v < 0 ? '−' : '') + Math.abs(Math.round(v * 100)) + '%';
+  const signed = (v, suffix) => num(v) === null ? '—' : `<span class="${v >= 0 ? 'pos' : 'neg'}">${money(v)}${suffix || ''}</span>`;
+
+  function ticket(d) {
+    const arv = num(d.arv) || 0, max = Math.max(arv, num(d.price) || 0, 1);
+    const at = v => Math.max(0, Math.min(100, (num(v) || 0) / max * 100)).toFixed(1);
+    const facts = [d.type, num(d.beds) ? d.beds + ' bed' : '', num(d.sqft) ? Number(d.sqft).toLocaleString('en-US') + ' sq ft' : ''].filter(Boolean).map(esc).join(' · ');
+    return `<article class="ticket">
+      <div class="t-head"><div class="score" aria-label="Score ${esc(d.score)} out of 100">${esc(d.score)}</div>
+        <div><h3>${esc(d.street)}, ${esc(d.town)}</h3><p>${facts}</p></div></div>
+      <p class="verdict">${esc(d.verdict)}</p>
+      ${d.why ? `<p class="why">${esc(d.why)}</p>` : ''}
+      <div class="scale" aria-hidden="true">
+        <div class="scale-track"><span class="pin" style="left:${at(d.maxOffer)}%"></span><span class="pin ask" style="left:${at(d.price)}%"></span><span class="pin" style="left:${at(arv)}%;margin-left:-2px"></span></div>
+        <div class="scale-key"><span><i></i>Max offer ${money(d.maxOffer)}</span><span><i class="a"></i>Asking ${money(d.price)}</span><span><i></i>ARV ${money(arv)}</span></div>
+      </div>
+      <dl class="ledger">
+        <dt>Asking price</dt><dd>${money(d.price)}</dd>
+        <dt>$/sq ft vs town sold median</dt><dd>${pct(d.vsMarket)}</dd>
+        <dt>After-repair value</dt><dd>${money(d.arv)}</dd>
+        <dt>Repairs (estimate)</dt><dd>${money(d.repairs)}</dd>
+        <dt>Max offer, 70% rule</dt><dd>${money(d.maxOffer)}</dd>
+        <dt>Flip profit at asking</dt><dd>${signed(d.profit)}</dd>
+        <dt class="rule"></dt>
+        <dt>Rent estimate</dt><dd>${num(d.rent) === null ? '—' : money(d.rent) + '/mo'}</dd>
+        <dt>Cash flow, 25% down</dt><dd>${signed(d.cashFlow, '/mo')}</dd>
+      </dl></article>`;
+  }
+
+  function render(deals, live) {
+    const list = deals.slice(0, 3);
+    $('tickets').innerHTML = list.map(ticket).join('');
+    const tag = $('dealsTag');
+    tag.textContent = live ? 'Live from this morning’s list' : 'Example deals, not real listings';
+    tag.classList.toggle('live', !!live);
+    $('dealsH').textContent = live ? 'Three deals on the list right now' : 'What a deal looks like';
+  }
+
+  render(EXAMPLES, false);
+
+  if (ENDPOINT) {
+    fetch(ENDPOINT).then(r => r.json()).then(j => {
+      if (j && Array.isArray(j.deals) && j.deals.length) render(j.deals, true);
+      const pl = j && j.plan;
+      if (pl && pl.price) $('planPrice').textContent = pl.price;
+      if (pl && /^https:\/\//.test(pl.link)) { $('planLink').href = pl.link; $('planLink').hidden = false; }
+      const c = j && j.counts;
+      if (c && c.listings) {
+        const items = [['Listings scanned', c.listings], ['Sold comps', c.soldComps], ['Deals on the list', c.deals]];
+        if (c.tracked) items.push(['Flagged deals since sold', c.tracked]);
+        $('counts').innerHTML = items.filter(i => num(i[1]) !== null).map(i => `<li>${esc(i[0])} <b>${Number(i[1]).toLocaleString('en-US')}</b></li>`).join('');
+        $('counts').hidden = false;
+      }
+    }).catch(() => {});
+  }
+
+  const say = t => { const m = $('msg'); m.textContent = t; m.hidden = false; };
+  $('signup').addEventListener('submit', ev => {
+    ev.preventDefault();
+    const email = $('email').value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[A-Za-z]{2,}$/.test(email)) { say('That email address doesn’t look right. Check it and try again.'); $('email').focus(); return; }
+    if (!ENDPOINT) { say('This is a preview page, so nothing was saved. Signups turn on once the page is connected to the sheet.'); return; }
+    const btn = $('send'); btn.disabled = true; btn.textContent = 'Sending…';
+    // Apps Script web apps don't answer cross-site POSTs readably, so this is sent "blind".
+    fetch(ENDPOINT, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({ email, interest: $('interest').value, towns: $('towns').value, maxPrice: $('maxPrice').value, hp: $('company').value, source: 'site' }) })
+      .then(() => { say('Sent. If it went through, your first deals arrive with the next weekly email.'); $('signup').reset(); })
+      .catch(() => say('That didn’t send. Check your connection and try again.'))
+      .then(() => { btn.disabled = false; btn.textContent = 'Send me deals'; });
+  });
+})();
+</script>
+</body>
+</html>
